@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const mongoose = require("mongoose");
-const routes = require("./routes/routes");
+const routes = require("./routes/routes.js");
 
 // Add routes, both API and view
 app.use(routes);
