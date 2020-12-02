@@ -11,6 +11,23 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+const mongoose = require("mongoose");
+const routes = require("./routes/routes");
+
+// Add routes, both API and view
+app.use(routes);
+
+// Connect to the Mongo DB
+console.log({ MONGODB_URI: process.env.MONGODB_URI });
+
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/googlebooks', {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
+
 // Define API routes here
 
 // Send every other request to the React app
